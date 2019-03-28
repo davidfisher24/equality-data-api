@@ -1,17 +1,27 @@
 const Router = require('./Router')
+const _ = require('lodash')
 
 class DataRouter extends Router {
 	constructor() {
-		super('Data',{extend: true})
-		this.overwriteRoutes();
-		this.addRoutes();
-		return this.router;
+		super('Data')
     }
 
-    overwriteRoutes() {
+    findAllQuery(query){
+    	return {
+			where: _.pick(query, 'id', 'year', 'CountryId', 'wblIndex'),
+			attributes: this.getAttributes(query)
+		}
     }
 
-    addRoutes() {
+    getAttributes(query){
+    	const attr = _.pick(query, 'categories', 'criteria');
+    	var attrs = [];
+    	for (var key in attr) {
+    		attr[key].split(',').forEach(a => {
+    			attrs.push(key === 'categories' ? 'cat' + a : 'cr' + a)
+    		})
+    	}
+    	return attrs.concat('id','year','wblIndex','CountryId');
     }
 }
 
