@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "PORT=3000 nodemon server.js"
+    "start": "PORT=3001 nodemon server.js"
   },
   "author": "David Fisher",
   "license": "ISC",

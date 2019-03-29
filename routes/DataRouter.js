@@ -9,7 +9,10 @@ class DataRouter extends Router {
     findAllQuery(query){
     	return {
 			where: _.pick(query, 'id', 'year', 'CountryId', 'wblIndex'),
-			attributes: this.getAttributes(query)
+			attributes: this.getAttributes(query),
+            include: {
+                all: true,
+            }
 		}
     }
 
