@@ -5,10 +5,14 @@ class Router {
 	constructor(model) {
 		this.router = express.Router();
 		this.models = models;
+		this.model = this.models[model]
+		this.addQueryRoutes();
+    }
 
-		this.router.route('/').get(async (req, res) => {
+    addQueryRoutes(){
+    	this.router.route('/').get(async (req, res) => {
 			try {
-				let dataAll = await this.models[model].findAll(this.findAllQuery(req.query)) 
+				let dataAll = await this.model.findAll(this.findAllQuery(req.query)) 
 				res.status(200).json(dataAll)
 			} catch (e) {
 				res.status(400).json(e);
@@ -18,15 +22,13 @@ class Router {
 
 		this.router.route('/:id').get(async (req, res) => {
 			try {
-				let dataOne = await this.models[model].findByPk(req.params.id,this.findOneQuery(req.query)) 
+				let dataOne = await this.model.findByPk(req.params.id,this.findOneQuery(req.query)) 
 				res.status(200).json(dataOne)
 			} catch (e) {
 				res.status(400).json(e);
 			}
 	
 		});
-
-		return this.router;
     }
 
     findAllQuery(query){
@@ -41,6 +43,10 @@ class Router {
 				all: true,
 			}
 		}
+    }
+
+    build(){
+    	return this.router;
     }
 
 }

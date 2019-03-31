@@ -23,6 +23,7 @@ app.use('/country', routes.countryRouter);
 app.use('/income-group', routes.incomeGroupRouter);
 app.use('/region', routes.regionRouter);
 app.use('/data', routes.dataRouter);
+app.use('/experience', routes.experienceRouter);
 
 app.all('*', function(req, res) {
     return res.status(404).json({

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     Country.belongsTo(models.Region);
   	Country.belongsTo(models.IncomeGroup);
   	Country.hasMany(models.Data);
+    Country.hasMany(models.Experience);
   };
   return Country;
 };
