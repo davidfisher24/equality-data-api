@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
+      reported: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       text: {
         type: Sequelize.TEXT
       },

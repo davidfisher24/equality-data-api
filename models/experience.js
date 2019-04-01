@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    reported: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   }, {
     timestamps: true,
   });
@@ -23,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Experience._findAll = Experience.findAll;
+
+  Experience.updateReportedById = async function(id) {
+    return await sequelize.query('UPDATE "Experiences" SET reported = true WHERE id = ' + id)
+  }
+
+  Experience.updateValidatedById = async function(id) {
+    return await sequelize.query('UPDATE "Experiences" SET validated = true WHERE id = ' + id)
+  }
 
   Experience.prototype.convertFormatToGeoJson = function() {
     this.dataValues = {
