@@ -1,5 +1,6 @@
 const DataRouter = require('./DataRouter');
 const ExperienceRouter = require('./ExperienceRouter');
+const AssetRouter = require('./AssetRouter');
 const Router = require('./Router');
 
 var criteriaRouter = new Router('Criteria').build();
@@ -10,9 +11,10 @@ var regionRouter = new Router('Region').build();
 
 var dataRouter = new DataRouter().build();
 var experienceRouter = new ExperienceRouter().build();
+var assetRouter = new AssetRouter().build();
 
 module.exports = {
 	criteriaRouter, categoryRouter, incomeGroupRouter, regionRouter, 
-	countryRouter, dataRouter, experienceRouter,
+	countryRouter, dataRouter, experienceRouter, assetRouter,
 }
 

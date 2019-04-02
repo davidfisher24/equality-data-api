@@ -4,7 +4,6 @@ var dotenv      = require('dotenv').config();
 var cors 		= require('cors');
 var postgre  	= require('pg');
 var models 		= require('./models')
-
 var app         = express();
 
 app.use(bodyParser.json());
@@ -16,7 +15,7 @@ app.use(function(req, res, next) {
   req.url = req.url.replace(/\/\//, '/');
   next();
 });
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/assets*', routes.assetRouter);
 app.use('/criteria', routes.criteriaRouter);
 app.use('/category', routes.categoryRouter);
 app.use('/country', routes.countryRouter);
