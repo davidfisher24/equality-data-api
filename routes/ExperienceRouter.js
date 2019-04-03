@@ -19,11 +19,17 @@ class ExperienceRouter extends Router {
                     latitude: req.body.latitude,
                     longitude: req.body.longitude,
                 }) 
-                await newOne.setCountry(req.body.country)
-                await newOne.setExperienceType(req.body.type)
-                await newOne.setCriterion(req.body.criteria)
+                if (req.body.country) {
+                    let country = await this.models['Country'].findOne({
+                        where: { wbcodev2: req.body.country }
+                    })
+                    await newOne.setCountry(country.id)
+                }
+                await newOne.setCategory(req.body.category);
+                await newOne.setExperienceType(req.body.experienceType)
                 res.status(200).json(newOne)
             } catch (e) {
+                console.log(e)
                 res.status(400).json(e);
             }
     

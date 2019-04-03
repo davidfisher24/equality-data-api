@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   Experience.associate = function(models) {
     Experience.belongsTo(models.Country);
     Experience.belongsTo(models.ExperienceType);
-    Experience.belongsTo(models.Criteria);
+    Experience.belongsTo(models.Category);
   };
 
   Experience._findAll = Experience.findAll;

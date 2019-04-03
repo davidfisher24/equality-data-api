@@ -48,10 +48,10 @@ module.exports = {
           key: 'id'
         },
       },
-      CriterionId: {
+      CategoryId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Criteria',
+          model: 'Categories',
           key: 'id'
         },
       },
