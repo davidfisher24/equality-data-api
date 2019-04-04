@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const ExperienceType = sequelize.define('ExperienceType', {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    icon: DataTypes.STRING
   }, {
   	timestamps: false,
   });

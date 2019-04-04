@@ -25,11 +25,10 @@ class ExperienceRouter extends Router {
                     })
                     await newOne.setCountry(country.id)
                 }
-                await newOne.setCategory(req.body.category);
-                await newOne.setExperienceType(req.body.experienceType)
+                await newOne.setCategory(parseInt(req.body.category));
+                await newOne.setExperienceType(parseInt(req.body.type))
                 res.status(200).json(newOne)
             } catch (e) {
-                console.log(e)
                 res.status(400).json(e);
             }
     
